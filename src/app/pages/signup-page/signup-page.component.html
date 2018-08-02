@@ -1,0 +1,50 @@
+<h1>Register</h1>
+<form (ngSubmit)="submitForm(form)" #form="ngForm" novalidate [ngClass]="{'is-processing': processing}">
+
+  <div class="field" [ngClass]="{'has-error': usernameField.errors}">
+    <p> Username
+      <input type="text" name="username" [(ngModel)]="username" #usernameField="ngModel" required minlength="6" [disabled]="processing"
+      />
+    </p>
+    <div *ngIf="usernameField.errors && (usernameField.dirty || usernameField.touched)">
+      <p class="error" [hidden]="!usernameField.errors.required" [ngClass]="{'has-error': feedbackEnabled}">
+        Username must be at least 6 characters long.
+      </p>
+    </div>
+  </div>
+
+  <div class="field" [ngClass]="{'has-error': emailField.errors}">
+    <p> Email
+      <input type="email" name="email" [(ngModel)]="email" #emailField="ngModel" required [disabled]="processing" />
+    </p>
+    <div *ngIf="emailField.errors && (emailField.dirty || emailField.touched)">
+      <p class="error" [hidden]="!emailField.errors" [ngClass]="{'has-error': feedbackEnabled}">
+        Did you spell your email correctly?
+      </p>
+    </div>
+  </div>
+
+  <div class="field" [ngClass]="{'has-error': passwordField.errors}">
+    <p> Password
+      <input type="password" name="password" [(ngModel)]="password" #passwordField="ngModel" required minlength="6" [disabled]="processing"
+      />
+    </p>
+    <div *ngIf="passwordField.errors && (passwordField.dirty || passwordField.touched)">
+      <p class="error" [hidden]="!passwordField.errors.required" [ngClass]="{'has-error': feedbackEnabled}">
+        Password is to short
+      </p>
+    </div>
+  </div>
+
+  <div class="field-submit">
+    <button type="submit" [disabled]="processing"> Signup </button>
+  </div>
+
+  <div *ngIf="error" class="validation">
+    <div [ngSwitch]="error.code">
+      <p *ngSwitchCase="'username-not-unique'"> Username already exists</p>
+      <p *ngSwitchDefault> unexpected error get out of here</p>
+    </div>
+  </div>
+
+</form>
