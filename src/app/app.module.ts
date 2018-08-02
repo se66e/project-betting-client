@@ -16,16 +16,15 @@ import { SignupPageComponent } from './pages/signup-page/signup-page.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 
 // ----- Guards ----- \\
-
+import { RequireAnonGuard } from './guards/require-anon.guard';
+import { RequireUserGuard } from './guards/require-user.guard';
 
 // ----- Routes ----- \\
 const routes: Routes = [
-  { path: 'login', component: LoginPageComponent },
-  { path: 'signup', component: SignupPageComponent },
-  { path: 'profile', component: ProfilePageComponent }
+  { path: 'login', component: LoginPageComponent, canActivate: [RequireAnonGuard] },
+  { path: 'signup', component: SignupPageComponent, canActivate: [RequireAnonGuard] },
+  { path: 'profile', component: ProfilePageComponent, canActivate: [RequireUserGuard] }
 ];
-
-
 
 @NgModule({
   declarations: [
@@ -42,6 +41,8 @@ const routes: Routes = [
   ],
   providers: [
     AuthService,
+    RequireAnonGuard,
+    RequireUserGuard
   ],
   bootstrap: [
     AppComponent
