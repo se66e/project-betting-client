@@ -37,6 +37,11 @@ p {
 
 /* ---- layout ---- */
 
+a {
+  text-decoration:none;
+  color: black;
+}
+
 #site-header {
   padding: 30px 0;
   color: white;
@@ -72,7 +77,7 @@ p {
 
 /* -- forms signup/login -- */
 
-/* form.is-processing {
+form.is-processing {
 	opacity: 0.5;
 }
 
@@ -99,14 +104,52 @@ form .submit button {
   padding: 5px 20px;
   text-align: center;
   font-size: 16px;
-  background-color: cyan;
+  background-color: blue;
   cursor: pointer;
-} */
+} 
 
-/* form .field.has-error input {
-	border-left: 5px solid #a94442; 
+.auth-form {
+    background: rgb(125, 235, 180);
+    box-shadow: 0 4px 5px 0 rgba(0,0,0,0.2);
+    height: 40vh;
 }
 
-form .field[required].has-error input {
-  border-left: 5px solid #42A948; 
-} */
+.auth-header .signup,
+.auth-header .login {
+  background: rgb(125, 235, 180);
+  margin: 0;
+  height: 50px;
+  padding-top: 12px;
+}
+
+.auth-container {
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.auth-header {
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    width: 65%;
+}
+
+.login, .signup, a{
+  font-size: 20px;
+  width: 50%;
+  text-align: center;
+}
+.auth-container a h1 {
+  width: 100%;
+}
+
+.auth-container a {
+  opacity: 0.7;
+}
+
+.auth-form {
+  text-align: center;
+  padding: 50px 0
+}
+

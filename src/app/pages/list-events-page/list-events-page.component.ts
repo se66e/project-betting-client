@@ -11,6 +11,7 @@ export class ListEventsPageComponent implements OnInit {
   eventList: any;
 
   constructor(private eventService: EventService, private router: Router) {
+
     eventService.getAll()
       .then((result) => {
         this.eventList = result;

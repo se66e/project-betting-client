@@ -16,15 +16,17 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { SignupPageComponent } from './pages/signup-page/signup-page.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { ListEventsPageComponent } from './pages/list-events-page/list-events-page.component';
+import { CreateEventPageComponent } from './pages/create-event-page/create-event-page.component';
+import { HomePageComponent } from './pages/home-page/home-page.component';
 
 // ----- Guards ----- \\
 import { RequireAnonGuard } from './guards/require-anon.guard';
 import { RequireUserGuard } from './guards/require-user.guard';
 import { AuthInitGuard } from './guards/auth-init.guard';
 
-
 // ----- Routes ----- \\
 const routes: Routes = [
+  { path: '', component: HomePageComponent },
   { path: 'login', component: LoginPageComponent, canActivate: [RequireAnonGuard] },
   { path: 'signup', component: SignupPageComponent, canActivate: [RequireAnonGuard] },
   { path: 'profile', component: ProfilePageComponent, canActivate: [RequireUserGuard] },
@@ -38,7 +40,9 @@ const routes: Routes = [
     LoginPageComponent,
     SignupPageComponent,
     ProfilePageComponent,
-    ListEventsPageComponent
+    ListEventsPageComponent,
+    CreateEventPageComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,
