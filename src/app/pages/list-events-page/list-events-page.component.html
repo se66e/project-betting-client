@@ -1,0 +1,8 @@
+<button (click)="createOne()" class="create">
+  +
+</button>
+<ul>
+  <li *ngFor="let event of eventList">
+    <p>Event: {{event.name | titlecase }}</p>
+  </li>
+</ul>
