@@ -31,6 +31,7 @@ export class AuthService {
       .then((user) => this.setUser(user))
       .catch((err) => {
         if (err.status === 404) {
+          this.setUser();
           return null;
         } else {
           Promise.reject(new Error('unexpected error'));

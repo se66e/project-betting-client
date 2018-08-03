@@ -1,13 +1,16 @@
 <header id="site-header">
-  <div *ngIf="loading">
-    <p>....loading.... </p>
-  </div>
-  <div class="container">
-    <div class="field-logout" *ngIf="user">
-      <button (click)="logout()">Logout</button>
-    </div>
-    <div class="field-login" *ngIf="!user">
-      <a [routerLink]="['/login']">Login</a>
+  <div class="nav-container">
+    <div [ngClass]="{'is-user': user, 'is-anon': anon}">
+      <div *ngIf="loading">
+        <span class="loading-screen">...loading...</span>
+      </div>
+      <div *ngIf="!loading && !!user">
+        <a class="navbar-text" [routerLink]="['/profile']">{{user.username}}</a>
+        <a class="navbar-text" (click)="logout()">logout</a>
+      </div>
+      <div *ngIf="!loading && anon">
+        <a class="navbar-text" [routerLink]="['/login']">login</a>
+      </div>
     </div>
   </div>
 </header>

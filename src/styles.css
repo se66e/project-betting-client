@@ -60,6 +60,11 @@ p, a, button, input {
   background: rgb(5, 1, 27);
 }
 
+.navbar-text {
+  float: right;
+  color: white;
+}
+
 #site-footer {
   color: white;
   padding: 60px 0;
