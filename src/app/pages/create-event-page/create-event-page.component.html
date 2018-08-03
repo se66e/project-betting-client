@@ -1,46 +1,39 @@
 <p>
   <input id="show-form" type="checkbox" [(ngModel)]="showForm">
-  <label for="show-form"> Create Event </label>
+  <!-- <label class="show-create-form" for="show-form"></label> -->
 </p>
+<div class="create-form">
+  <form [hidden]="!showForm" #createEvent="ngForm">
 
-<form [hidden]="!showForm" #createEvent="ngForm">
+    <div class="field">
+      <label for="name">Name your event</label>
+      <input id="name" type="text" [(ngModel)]="name" name="name" #nameField="ngModel" required>
+      <p *ngIf="nameField.touched && nameField.invalid">Please add a headline</p>
+    </div>
 
-  <div class="field">
-    <label for="name">Name your event</label>
-    <input id="name" type="text" [(ngModel)]="name" name="name" #nameField="ngModel" required>
-    <p *ngIf="nameField.touched && nameField.invalid">Please add a headline</p>
-  </div>
+    <div class="field">
+      <label for="category">Type</label>
+      <select id="category" type="" [(ngModel)]="category" name="category" #categoryField="ngModel">
+        <option selected="selected">-----|-----</option>
+        <option *ngFor="let item of categoryEnum">{{item | titlecase}}</option>
+      </select>
+    </div>
 
-  <div class="field">
-    <label for="category">Type</label>
-    <select id="category" type="" [(ngModel)]="category" name="category" #categoryField="ngModel">
-      <option *ngFor="let item of category" [value]="pow">{{category[1]}}</option>
-    </select>
-  </div>
+    <div class="field">
+      <label for="location">Location</label>
+      <input id="location" type="text" [(ngModel)]="location" name="location" #locationField="ngModel">
+    </div>
 
-  <div class="field">
-    <label for="location">Location</label>
-    <input id="location" type="text" [(ngModel)]="location" name="location" #locationField="ngModel">
-  </div>
+    <div class="field">
+      <label for="date">When</label>
+      <input id="date" type="date" [(ngModel)]="date" name="date" #locationField="ngModel">
+    </div>
 
-  <div class="field">
-    <label for="date">When</label>
-    <input id="date" type="date" [(ngModel)]="date" name="date" #locationField="ngModel">
-  </div>
+    <div class="field">
+      <label for="details">Any Details?</label>
+      <input id="details" type="text" [(ngModel)]="details" name="details" #detailsField="ngModel">
+    </div>
 
-  <div class="field">
-    <label for="details">Any Details?</label>
-    <input id="details" type="text" [(ngModel)]="details" name="details" #detailsField="ngModel">
-  </div>
-
-  <button (click)="handleCreateClick(createEvent)">Create Event</button>
-</form>
-
-<!-- [disabled]="createEvent.invalid" -->
-
-
-<!-- <ul [hidden]="isHidden">
-  <li *ngFor="let event of eventList, let ix = index" [ngClass]="{'tall': student.height > 1.9}">
-    <app-student-card [student]="student" (deleteClick)="handleRemoveClick(ix)"></app-student-card>
-  </li>
-</ul> -->
+    <button (click)="handleCreateClick(createEvent)">Create Event</button>
+  </form>
+</div>

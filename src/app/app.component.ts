@@ -9,15 +9,24 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'client';
+  loading = true;
+  anon: boolean;
+  user: any;
 
   constructor(
     private authService: AuthService,
-    private router: Router
-  ) { }
+    private router: Router) {
+
+    authService.userChange$.subscribe((user) => {
+      this.loading = false;
+      this.user = user;
+      this.anon = !user;
+    });
+  }
 
   logout() {
-    this.router.navigate(['/login']);
-    this.authService.logout();
+    this.authService.logout()
+      .then(() => this.router.navigate(['/login']));
   }
 }
 

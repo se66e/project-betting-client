@@ -18,6 +18,14 @@ export class EventService {
       .toPromise();
   }
 
+  getOne(id) {
+    const options = {
+      withCredentials: true
+    };
+    return this.httpClient.get(`${this.baseUrl}/id`, options)
+      .toPromise();
+  }
+
   createOne(name: String, category: any, details: any, owner: String, applications: Array<Object>, location: String, date: Date) {
     const options = {
       withCredentials: true
@@ -25,7 +33,7 @@ export class EventService {
 
     const data = {
       name: name,
-      category: category,
+      categoryEnum: category,
       owner: owner,
       details: details,
       location: location,

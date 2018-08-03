@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { EventService } from '../../services/event.service';
 import { Router } from '@angular/router';
 
@@ -9,24 +9,28 @@ import { Router } from '@angular/router';
 })
 export class CreateEventPageComponent implements OnInit {
   name: String;
-  category: any;
+  // category: Object;
   details: any;
   location: String;
   date: Date;
   owner: String;
   applications: any;
   showForm = false;
+  newEvent: any;
+  categoryEnum: Array<string>;
 
   constructor(private eventService: EventService, private router: Router) {
   }
 
   ngOnInit() {
+    this.categoryEnum = ['poker', 'fifa', 'racketgames', 'golf', 'football', 'other'];
   }
 
   handleCreateClick(event) {
     if (event.valid) {
-      this.eventService.createOne(this.name, this.category, this.details, this.owner, this.applications, this.location, this.date)
+      this.eventService.createOne(this.name, this.categoryEnum, this.details, this.owner, this.applications, this.location, this.date)
         .then((result) => {
+          this.newEvent = result;
           this.showForm = false;
         })
         .catch((err) => {
@@ -34,4 +38,5 @@ export class CreateEventPageComponent implements OnInit {
         });
     }
   }
+
 }

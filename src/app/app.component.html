@@ -1,7 +1,13 @@
 <header id="site-header">
+  <div *ngIf="loading">
+    <p>....loading.... </p>
+  </div>
   <div class="container">
-    <div class="field-logout">
+    <div class="field-logout" *ngIf="user">
       <button (click)="logout()">Logout</button>
+    </div>
+    <div class="field-login" *ngIf="!user">
+      <a [routerLink]="['/login']">Login</a>
     </div>
   </div>
 </header>

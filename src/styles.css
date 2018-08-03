@@ -37,10 +37,22 @@ p {
 
 /* ---- layout ---- */
 
+/* ---- Global styles ---- */
+
 a {
   text-decoration:none;
   color: black;
 }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: Montserrat
+}
+
+p, a, button, input {
+  font-family: Roboto
+}
+
+/* ---- Static styles ---- */
 
 #site-header {
   padding: 30px 0;
@@ -74,7 +86,6 @@ a {
   }
 }
 
-
 /* -- forms signup/login -- */
 
 form.is-processing {
@@ -85,33 +96,14 @@ form .field {
 	margin-bottom: 20px;
 }
 
-form label {
-	display: block;
-	margin-bottom: 10px;
-	font-style: bold;
-}
-
 form input {
   padding: 5px;
   font-size: 16px;
 }
-
-form .submit {
-  padding-top: 20px;
-}
-
-form .submit button {
-  padding: 5px 20px;
-  text-align: center;
-  font-size: 16px;
-  background-color: blue;
-  cursor: pointer;
-} 
-
 .auth-form {
-    background: rgb(125, 235, 180);
-    box-shadow: 0 4px 5px 0 rgba(0,0,0,0.2);
-    height: 40vh;
+  background: rgb(125, 235, 180);
+  box-shadow: 0 4px 5px 0 rgba(0,0,0,0.2);
+  height: 42vh;
 }
 
 .auth-header .signup,
@@ -125,14 +117,14 @@ form .submit button {
 .auth-container {
   display: flex;
   flex-direction: column;
-  
+  margin-top: 20vh;
 }
 
 .auth-header {
-    display: flex;
-    justify-content: space-around;
-    align-content: center;
-    width: 65%;
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+  width: 66.67%;
 }
 
 .login, .signup, a{
@@ -152,4 +144,57 @@ form .submit button {
   text-align: center;
   padding: 50px 0
 }
+
+.ng-valid[required], .ng-valid.required  {
+  border-left: 5px solid #42A948; 
+}
+
+.ng-invalid:not(form)  {
+  border-left: 5px solid #a94442; 
+}
+
+/* -- Create form -- */
+
+.create-form {
+  background: rgb(255, 255, 255);
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  box-shadow: 20px black;
+}
+
+/* -- checkboxes -- */
+
+input[type="checkbox"]:checked {
+  appearance: none;
+  background-color: #a94442;
+	border: 1px solid #a94442;
+	padding: 20px;
+	border-radius: 50%;
+  position: relative;
+  outline:0;
+  float: right;
+}
+
+input[type="checkbox"] {
+  appearance: none;
+  background-color: #2a60c4;
+	border: 1px solid #2a60c4;
+	padding: 20px;
+	border-radius: 50%;
+  position: relative;
+  outline:0;
+  float: right;
+}
+
+/* -- List style -- */
+
+ul {
+  list-style: none;
+  margin: 0
+}
+
+
+
+
+
 

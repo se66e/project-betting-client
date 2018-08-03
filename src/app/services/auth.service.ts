@@ -1,14 +1,26 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
+import { Subject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
+  private user: any;
+  private userChange: Subject<any> = new Subject();
+
   private baseUrl = 'http://localhost:3000/auth';
 
+  userChange$: Observable<any> = this.userChange.asObservable();
+
   constructor(private httpClient: HttpClient) { }
+
+  private setUser(user?: any) {
+    this.user = user;
+    this.userChange.next(user);
+    return user;
+  }
 
   me() {
     const options = {
@@ -16,6 +28,7 @@ export class AuthService {
     };
     return this.httpClient.get(`${this.baseUrl}/me`, options)
       .toPromise()
+      .then((user) => this.setUser(user))
       .catch((err) => {
         if (err.status === 404) {
           return null;
@@ -34,7 +47,8 @@ export class AuthService {
       email
     };
     return this.httpClient.post(`${this.baseUrl}/signup`, data, options)
-      .toPromise();
+      .toPromise()
+      .then((result) => this.setUser(result));
   }
   login(username: string, password: string) {
     const options = {
@@ -45,13 +59,15 @@ export class AuthService {
       password
     };
     return this.httpClient.post(`${this.baseUrl}/login`, data, options)
-      .toPromise();
+      .toPromise()
+      .then((result) => this.setUser(result));
   }
   logout() {
     const options = {
       withCredentials: true
     };
     return this.httpClient.post(`${this.baseUrl}/logout`, {}, options)
-      .toPromise();
+      .toPromise()
+      .then(() => this.setUser());
   }
 }
