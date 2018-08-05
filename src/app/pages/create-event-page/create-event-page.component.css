@@ -3,3 +3,25 @@
   width: 20px;
   display: inline-block;
 } */
+
+input[type="checkbox"]:checked {
+  appearance: none;
+  background-color: #a94442;
+	border: 1px solid #a94442;
+	padding: 20px;
+	border-radius: 50%;
+  position: relative;
+  outline:0;
+  float: right;
+}
+
+input[type="checkbox"] {
+  appearance: none;
+  background-color: #2a60c4;
+	border: 1px solid #2a60c4;
+	padding: 20px;
+	border-radius: 50%;
+  position: relative;
+  outline:0;
+  float: right;
+}

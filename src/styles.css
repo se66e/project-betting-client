@@ -17,8 +17,6 @@ body {
 /* ---- typography ---- */
 
 body {
-  color: black;
-  font-family: Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 147%;
 }
@@ -45,14 +43,24 @@ a {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: Montserrat
+  font-family: Montserrat, sans-serif
 }
 
 p, a, button, input {
-  font-family: Roboto
+  font-family: Roboto, sans-serif;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0
 }
 
 /* ---- Static styles ---- */
+
+header a {
+  color: white;
+}
 
 #site-header {
   padding: 30px 0;
@@ -60,9 +68,22 @@ p, a, button, input {
   background: rgb(5, 1, 27);
 }
 
-.navbar-text {
-  float: right;
-  color: white;
+.nav-container {
+  margin: 0 20px;
+}
+
+.menu-container {
+  position: absolute;
+  background: rgb(255, 255, 255);
+  margin: 0 20px;
+}
+
+#show-menu {
+display: none;
+}
+
+.menu-item {
+  padding: 10px;
 }
 
 #site-footer {
@@ -98,7 +119,7 @@ form.is-processing {
 }
 
 form .field {
-	margin-bottom: 20px;
+	margin-top: 20px;
 }
 
 form input {
@@ -158,46 +179,60 @@ form input {
   border-left: 5px solid #a94442; 
 }
 
-/* -- Create form -- */
+/* -- Forms create -- */
+
+.form-content {
+  text-align: center;
+}
 
 .create-form {
-  background: rgb(255, 255, 255);
-  border-left: 1px solid black;
-  border-right: 1px solid black;
+  background: rgb(177, 41, 41);
   box-shadow: 20px black;
+  border-radius: 8px;
 }
 
-/* -- checkboxes -- */
-
-input[type="checkbox"]:checked {
-  appearance: none;
-  background-color: #a94442;
-	border: 1px solid #a94442;
-	padding: 20px;
-	border-radius: 50%;
-  position: relative;
-  outline:0;
-  float: right;
+.create-form h1 {
+  margin: 0;
+  text-align: center;
+  padding: 20px 0;
+  background: rgb(5, 1, 27);
+  color: white;
 }
 
-input[type="checkbox"] {
-  appearance: none;
-  background-color: #2a60c4;
-	border: 1px solid #2a60c4;
-	padding: 20px;
-	border-radius: 50%;
-  position: relative;
-  outline:0;
-  float: right;
+.create-form button {
+  padding: 15px 20px;
+  background: white;
+  border-radius: 8px;
+  margin: 20px 0;
+  font-size: 16px
 }
 
-/* -- List style -- */
-
-ul {
-  list-style: none;
-  margin: 0
+.create-form input {
+  border: none;
+  
 }
 
+.flex-column {
+  display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+/* -- Cards -- */
+
+.event-card {
+width: 100%;
+padding-top: 20px;
+}
+
+.all-cards {
+  display: flex;
+  flex-direction: column;
+  margin: 50px 0;
+}
 
 
 

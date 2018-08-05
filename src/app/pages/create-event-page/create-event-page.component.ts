@@ -8,30 +8,31 @@ import { Router } from '@angular/router';
   styleUrls: ['./create-event-page.component.css']
 })
 export class CreateEventPageComponent implements OnInit {
+  @Input() eventList;
   name: String;
-  // category: Object;
-  details: any;
+  details: String;
   location: String;
   date: Date;
   owner: String;
   applications: any;
+  category: any;
   showForm = false;
-  newEvent: any;
-  categoryEnum: Array<string>;
 
   constructor(private eventService: EventService, private router: Router) {
+    // this.category = ['poker', 'fifa', 'racketgames', 'golf', 'football', 'other'];
   }
 
   ngOnInit() {
-    this.categoryEnum = ['poker', 'fifa', 'racketgames', 'golf', 'football', 'other'];
   }
 
   handleCreateClick(event) {
     if (event.valid) {
-      this.eventService.createOne(this.name, this.categoryEnum, this.details, this.owner, this.applications, this.location, this.date)
+      this.eventService.createOne(this.name, this.category, this.details, this.owner, this.applications, this.location, this.date)
         .then((result) => {
-          this.newEvent = result;
+          this.eventList.unshift(result);
           this.showForm = false;
+          console.log(result);
+          console.log('You just created an event named ' + this.name);
         })
         .catch((err) => {
           console.log(err);

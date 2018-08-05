@@ -1,6 +1,9 @@
+
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Subject, Observable } from 'rxjs';
+import { Router } from '@angular/router';
+
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +19,7 @@ export class EventService {
 
   newEvent: any;
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private router: Router) { }
 
   setUser(user?: any) {
     this.user = user;
@@ -38,16 +41,17 @@ export class EventService {
       });
   }
 
-  getOne(id) {
+  getOne(id: String) {
     const options = {
       withCredentials: true
     };
-    return this.httpClient.get(`${this.baseUrl}/id`, options)
+    return this.httpClient.get(`${this.baseUrl}/${id}`, options)
       .toPromise()
       .then((user) => this.setUser(user))
       .catch((err) => {
         if (err.status === 404) {
           this.setUser();
+          this.router.navigateByUrl('/not-found');
         }
       });
   }
@@ -59,7 +63,7 @@ export class EventService {
 
     const data = {
       name: name,
-      categoryEnum: category,
+      category: category,
       owner: owner,
       details: details,
       location: location,
@@ -77,3 +81,6 @@ export class EventService {
       });
   }
 }
+
+
+

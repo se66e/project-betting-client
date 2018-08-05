@@ -19,12 +19,12 @@ import { ListEventsPageComponent } from './pages/list-events-page/list-events-pa
 import { CreateEventPageComponent } from './pages/create-event-page/create-event-page.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { EventDetailsPageComponent } from './pages/event-details-page/event-details-page.component';
+import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
 
 // ----- Guards ----- \\
 import { RequireAnonGuard } from './guards/require-anon.guard';
 import { RequireUserGuard } from './guards/require-user.guard';
 import { AuthInitGuard } from './guards/auth-init.guard';
-import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
 
 // ----- Routes ----- \\
 const routes: Routes = [
@@ -34,7 +34,7 @@ const routes: Routes = [
   { path: 'profile', component: ProfilePageComponent, canActivate: [RequireUserGuard] },
   { path: 'events', component: ListEventsPageComponent, canActivate: [AuthInitGuard] },
   { path: 'events/:id', component: EventDetailsPageComponent, canActivate: [RequireUserGuard] },
-  { path: '**', component: NotFoundPageComponent }
+  { path: '**', component: NotFoundPageComponent, canActivate: [AuthInitGuard] }
 ];
 
 @NgModule({
@@ -47,7 +47,7 @@ const routes: Routes = [
     CreateEventPageComponent,
     HomePageComponent,
     EventDetailsPageComponent,
-    NotFoundPageComponent
+    NotFoundPageComponent,
   ],
   imports: [
     BrowserModule,

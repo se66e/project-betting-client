@@ -1,6 +1,14 @@
-<app-create-event-page></app-create-event-page>
+<app-create-event-page [eventList]="eventList"></app-create-event-page>
 <ul>
-  <li *ngFor="let event of eventList">
-    <p>Event: {{event.name | titlecase }}</p>
-  </li>
+  <div class="all-cards">
+    <li *ngFor="let item of eventList">
+      <div class="event-card">
+        <a [routerLink]="item._id">
+          <p>{{item.name}}</p>
+          <p>{{item.details}}</p>
+          {{item.owner}}
+        </a>
+      </div>
+    </li>
+  </div>
 </ul>

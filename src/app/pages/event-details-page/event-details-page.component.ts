@@ -9,19 +9,27 @@ import { EventService } from '../../services/event.service';
   styleUrls: ['./event-details-page.component.css']
 })
 export class EventDetailsPageComponent implements OnInit {
-  eventId: String;
-
+  eventId: string;
+  event: any;
 
   constructor(private activatedRoute: ActivatedRoute, private eventService: EventService, private router: Router) {
     this.activatedRoute.params
       .subscribe((params) => {
-        this.eventService.getOne(params.id);
-        return (data => this.eventId = data);
+        this.eventId = params.id;
+        this.eventService.getOne(this.eventId)
+          .then((event) => {
+            this.event = event;
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+
       });
   }
 
   ngOnInit() {
   }
+
 }
 
 
