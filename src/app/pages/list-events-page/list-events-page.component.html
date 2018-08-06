@@ -1,14 +1,23 @@
 <app-create-event-page [eventList]="eventList"></app-create-event-page>
-<ul>
-  <div class="all-cards">
-    <li *ngFor="let item of eventList">
-      <div class="event-card">
-        <a [routerLink]="item._id">
-          <p>{{item.name}}</p>
-          <p>{{item.details}}</p>
-          {{item.owner}}
-        </a>
-      </div>
-    </li>
+<div class="cards-container">
+  <div class="change-view">
+    <button (click)="handleColumnView()">
+      <img src="../../../assets/images/column-view.svg">
+      <p>Column</p>
+    </button>
+    <button (click)="handleRowView()">
+      <img src="../../../assets/images/row-view.svg" alt="helo">
+      <p>Row</p>
+    </button>
   </div>
-</ul>
+  <ul>
+    <div [ngClass]="flexClasses">
+      <li *ngFor="let item of eventList" class="event-card">
+        <a [routerLink]="item._id">
+          <p>{{item.name | titlecase}}</p>
+          <img src="../../../assets/images/{{item.category}}.jpg" alt="">
+        </a>
+      </li>
+    </div>
+  </ul>
+</div>

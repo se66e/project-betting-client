@@ -1,43 +1,51 @@
-<div class="checkbox">
-  <input id="show-form" type="checkbox" [(ngModel)]="showForm">
-  <label class="show-create-form" for="show-form">+</label>
+<div class="container">
+  <div class="checkbox">
+    <input id="show-form" type="checkbox" [(ngModel)]="showForm">
+    <label class="show-create-form" for="show-form">
+      <img src="../../../assets/images/create-event.svg" alt="">
+      <p>Create</p>
+    </label>
+  </div>
+
+
+  <div class="create-form">
+    <form [hidden]="!showForm" #createEvent="ngForm">
+      <h1>Create Event</h1>
+      <div class="form-content">
+        <div class="field flex-column">
+          <label for="name">Name your event</label>
+          <input id="name" type="text" [(ngModel)]="name" name="name" #nameField="ngModel" required>
+          <p *ngIf="nameField.touched && nameField.invalid">Please add a name</p>
+        </div>
+
+        <div class="field flex-column">
+          <label for="category">Type</label>
+          <select id="category" type="select" [(ngModel)]="category" name="category" #categoryField="ngModel">
+            <option selected="selected">other</option>
+            <option>poker</option>
+            <option>fifa</option>
+            <option>racketgames</option>
+            <option>golf</option>
+            <option>football</option>
+          </select>
+        </div>
+
+        <div class="field flex-column">
+          <label for="location">Location</label>
+          <input id="location" type="text" [(ngModel)]="location" name="location" #locationField="ngModel">
+        </div>
+
+        <div class="field flex-column">
+          <label for="date">When</label>
+          <input id="date" type="date" [(ngModel)]="date" name="date" #locationField="ngModel">
+        </div>
+
+        <div class="field flex-column">
+          <label for="details">Any Details?</label>
+          <input id="details" type="text" [(ngModel)]="details" name="details" #detailsField="ngModel">
+        </div>
+        <button (click)="handleCreateClick(createEvent)">Create Event</button>
+      </div>
+    </form>
+  </div>
 </div>
-
-
-<div class="create-form">
-  <form [hidden]="!showForm" #createEvent="ngForm">
-    <h1>Create Event</h1>
-    <div class="form-content">
-      <div class="field flex-column">
-        <label for="name">Name your event</label>
-        <input id="name" type="text" [(ngModel)]="name" name="name" #nameField="ngModel" required>
-        <p *ngIf="nameField.touched && nameField.invalid">Please add a name</p>
-      </div>
-
-      <div class="field flex-column">
-        <label for="category">Type</label>
-        <select id="category" type="select" [(ngModel)]="category" name="category" #categoryField="ngModel">
-          <option>Poker</option>
-        </select>
-      </div>
-
-      <div class="field flex-column">
-        <label for="location">Location</label>
-        <input id="location" type="text" [(ngModel)]="location" name="location" #locationField="ngModel">
-      </div>
-
-      <div class="field flex-column">
-        <label for="date">When</label>
-        <input id="date" type="date" [(ngModel)]="date" name="date" #locationField="ngModel">
-      </div>
-
-      <div class="field flex-column">
-        <label for="details">Any Details?</label>
-        <input id="details" type="text" [(ngModel)]="details" name="details" #detailsField="ngModel">
-      </div>
-      <button (click)="handleCreateClick(createEvent)">Create Event</button>
-    </div>
-  </form>
-</div>
-
-<div *ngFor="let item of category">{{item | json}}</div>

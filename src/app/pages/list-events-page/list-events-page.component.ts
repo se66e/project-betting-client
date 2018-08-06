@@ -9,6 +9,11 @@ import { Router } from '@angular/router';
 })
 export class ListEventsPageComponent implements OnInit {
   eventList: any;
+  flexClasses = {
+    'all-cards-column': true,
+    'all-cards-row': false
+  };
+
 
   constructor(private eventService: EventService, private router: Router) {
 
@@ -21,6 +26,20 @@ export class ListEventsPageComponent implements OnInit {
       });
   }
   ngOnInit() {
+  }
+
+  handleRowView() {
+    this.flexClasses = {
+      'all-cards-column': false,
+      'all-cards-row': true
+    };
+  }
+
+  handleColumnView() {
+    this.flexClasses = {
+      'all-cards-column': true,
+      'all-cards-row': false
+    };
   }
 }
 

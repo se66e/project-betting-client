@@ -31,7 +31,10 @@ p {
   margin: 0;
 }
 
-
+button, a {
+  cursor: pointer;
+  outline: none;
+}
 
 /* ---- layout ---- */
 
@@ -46,7 +49,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: Montserrat, sans-serif
 }
 
-p, a, button, input {
+p, a, button, input, label {
   font-family: Roboto, sans-serif;
 }
 
@@ -223,15 +226,77 @@ form input {
 
 /* -- Cards -- */
 
-.event-card {
-width: 100%;
-padding-top: 20px;
+.all-cards-column {
+  display: flex;
+  flex-direction: column-reverse;
+  margin: 15px 0;
 }
 
-.all-cards {
+.all-cards-column li {
+  width: 100%;
+padding-top: 10px;
+}
+
+.all-cards-column .event-card {
+  width:100%;
+  height:400px;    
+  overflow:hidden;
+  position:relative;
+}
+
+.all-cards-column .event-card img {
+  position:absolute;
+  background-position: center
+}
+
+.all-cards-row {
   display: flex;
-  flex-direction: column;
-  margin: 50px 0;
+  flex-flow: row-reverse wrap-reverse;
+  justify-content: space-evenly;
+  margin: 15px 0;
+}
+
+.all-cards-row li {
+  width: 33%;
+  padding-top: 10px;
+}
+
+.all-cards-row .event-card {
+  height:150px;    
+  overflow:hidden;
+  position:relative;
+}
+
+.all-cards-row .event-card img {
+  position:absolute;
+  /* max-width:100%; */
+  height:100%;
+}
+
+.change-view {
+  width: 100%;
+  border-top: 1px solid gray;
+  display: flex;
+  justify-content: center;
+  justify-content: space-evenly;
+}
+
+.change-view button {
+  border: none;
+  backface-visibility: hidden;
+  background: rgba(0,0,0,0);
+}
+
+/* .change-view img {
+  width: 30px;
+} */
+
+.cards-container {
+  padding-top: 20px;
+}
+
+.checkbox img {
+  width: 30px;
 }
 
 

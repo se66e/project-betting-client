@@ -22,11 +22,11 @@
     <li class="menu-item">
       <a [routerLink]="['/']">Home</a>
     </li>
-    <li *ngIf="!loading && anon" class="menu-item">
-      <a [routerLink]="['/login']">login</a>
-    </li>
     <li class="menu-item">
       <a [routerLink]="['/events']">Events</a>
+    </li>
+    <li *ngIf="!loading && anon" class="menu-item">
+      <a [routerLink]="['/login']">Login / Register</a>
     </li>
     <li *ngIf="!loading && !!user" class="menu-item">
       <a (click)="logout()" style="cursor: pointer">Logout</a>
@@ -35,7 +35,7 @@
 </div>
 
 <div class="background-container">
-  <div id="site-main" class="container">
+  <div id="site-main">
     <router-outlet></router-outlet>
   </div>
 </div>
