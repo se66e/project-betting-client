@@ -21,7 +21,7 @@ export class RequireUserGuard implements CanActivate {
         if (user) {
           return true;
         } else {
-          this.location.back();
+          this.router.navigateByUrl('/profile');
           return false;
         }
       })

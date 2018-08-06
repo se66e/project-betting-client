@@ -32,13 +32,7 @@ export class EventService {
       withCredentials: true
     };
     return this.httpClient.get(`${this.baseUrl}`, options)
-      .toPromise()
-      .then((user) => this.setUser(user))
-      .catch((err) => {
-        if (err.status === 404) {
-          this.setUser();
-        }
-      });
+      .toPromise();
   }
 
   getOne(id: String) {
@@ -46,25 +40,16 @@ export class EventService {
       withCredentials: true
     };
     return this.httpClient.get(`${this.baseUrl}/${id}`, options)
-      .toPromise()
-      .then((user) => this.setUser(user))
-      .catch((err) => {
-        if (err.status === 404) {
-          this.setUser();
-          this.router.navigateByUrl('/not-found');
-        }
-      });
+      .toPromise();
   }
 
-  createOne(name: String, category: any, details: any, owner: String, applications: Array<Object>, location: String, date: Date) {
+  createOne(name: String, category: any, details: any, applications: Array<Object>, location: String, date: Date) {
     const options = {
       withCredentials: true
     };
-
     const data = {
       name: name,
       category: category,
-      owner: owner,
       details: details,
       location: location,
       date: date,
@@ -72,15 +57,35 @@ export class EventService {
     };
 
     return this.httpClient.post(`${this.baseUrl}`, data, options)
-      .toPromise()
-      .then((user) => this.setUser(user))
-      .catch((err) => {
-        if (err.status === 404) {
-          this.setUser();
-        }
-      });
+      .toPromise();
+  }
+  getMyEvents() {
+    const options = {
+      withCredentials: true
+    };
+    return this.httpClient.get(`${this.baseUrl}/my-events`, options)
+      .toPromise();
+  }
+
+  edit(id, name: any) {
+    const options = {
+      withCredentials: true
+    };
+    const data = {
+      name: name,
+      id: this.user
+      // category: category,
+      // details: details,
+      // location: location,
+      // date: date,
+      // applications: applications
+    };
+
+    return this.httpClient.post(`${this.baseUrl}/:id`, data, options)
+      .toPromise();
   }
 }
 
 
 
+// , category: any, details: string, location: string, date: Date, applications: any

@@ -41,6 +41,7 @@ export class ListEventsPageComponent implements OnInit {
       'all-cards-row': false
     };
   }
+
 }
 
 

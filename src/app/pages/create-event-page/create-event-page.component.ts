@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { EventService } from '../../services/event.service';
 import { Router } from '@angular/router';
 
@@ -17,7 +17,7 @@ export class CreateEventPageComponent implements OnInit {
   applications: any;
   category: any;
   showForm = false;
-  enum: any;
+
   constructor(private eventService: EventService, private router: Router) {
   }
 
@@ -26,7 +26,7 @@ export class CreateEventPageComponent implements OnInit {
 
   handleCreateClick(event) {
     if (event.valid) {
-      this.eventService.createOne(this.name, this.category, this.details, this.owner, this.applications, this.location, this.date)
+      this.eventService.createOne(this.name, this.category, this.details, this.applications, this.location, this.date)
         .then((result) => {
           this.eventList.push(result);
           this.showForm = false;

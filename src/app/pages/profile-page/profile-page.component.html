@@ -1,1 +1,24 @@
-<p>profile works</p>
+<div *ngIf="myEvents">
+  <div *ngFor="let item of myEvents" class="my-events">
+    {{item.name}}
+    <img src="../../../assets/images/{{item.category}}.jpg" alt="">
+  </div>
+
+  <div class="checkbox">
+    <input id="show-form" type="checkbox" [(ngModel)]="showForm">
+    <button>
+      <label class="show-create-form" for="show-form">
+        <p>Edit</p>
+      </label>
+    </button>
+  </div>
+
+  <form [hidden]="!showForm" #createEvent="ngForm">
+    <div class="field flex-column">
+      <label for="name">Name your event</label>
+      <input id="name" type="text" [(ngModel)]="name" name="name" #nameField="ngModel" required>
+      <p *ngIf="nameField.touched && nameField.invalid">Please add a name</p>
+    </div>
+    <button (click)="hanldeEditClick()">Edit</button>
+  </form>
+</div>

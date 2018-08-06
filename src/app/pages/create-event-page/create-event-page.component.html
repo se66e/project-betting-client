@@ -1,10 +1,12 @@
 <div class="container">
   <div class="checkbox">
     <input id="show-form" type="checkbox" [(ngModel)]="showForm">
-    <label class="show-create-form" for="show-form">
-      <img src="../../../assets/images/create-event.svg" alt="">
-      <p>Create</p>
-    </label>
+    <button>
+      <label class="show-create-form" for="show-form">
+        <img src="../../../assets/images/create-event.svg" alt="">
+        <p>Create</p>
+      </label>
+    </button>
   </div>
 
 
@@ -21,7 +23,7 @@
         <div class="field flex-column">
           <label for="category">Type</label>
           <select id="category" type="select" [(ngModel)]="category" name="category" #categoryField="ngModel">
-            <option selected="selected">other</option>
+            <option [selected]="other">other</option>
             <option>poker</option>
             <option>fifa</option>
             <option>racketgames</option>

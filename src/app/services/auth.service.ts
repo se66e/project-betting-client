@@ -71,4 +71,13 @@ export class AuthService {
       .toPromise()
       .then(() => this.setUser());
   }
+
+  getMy() {
+    const options = {
+      withCredentials: true
+    };
+    return this.httpClient.get(`${this.baseUrl}/profile`, options)
+      .toPromise()
+      .then((result) => this.setUser(result));
+  }
 }
