@@ -1,14 +1,16 @@
 <app-create-event-page [eventList]="eventList"></app-create-event-page>
 <div class="cards-container">
-  <div class="change-view">
-    <button (click)="handleColumnView()">
-      <img src="../../../assets/images/column-view.svg">
-      <p>Column</p>
-    </button>
-    <button (click)="handleRowView()">
-      <img src="../../../assets/images/row-view.svg" alt="helo">
-      <p>Row</p>
-    </button>
+  <div class="change-view-container">
+    <div class="change-view">
+      <button (click)="handleColumnView()">
+        <img src="../../../assets/images/column-view.svg">
+        <p>Column</p>
+      </button>
+      <button (click)="handleRowView()">
+        <img src="../../../assets/images/row-view.svg" alt="helo">
+        <p>Row</p>
+      </button>
+    </div>
   </div>
   <ul>
     <div [ngClass]="flexClasses">

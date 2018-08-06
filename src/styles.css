@@ -234,7 +234,7 @@ form input {
 
 .all-cards-column li {
   width: 100%;
-padding-top: 10px;
+  padding-top: 10px;
 }
 
 .all-cards-column .event-card {
@@ -246,7 +246,10 @@ padding-top: 10px;
 
 .all-cards-column .event-card img {
   position:absolute;
-  background-position: center
+  background-position: center;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }
 
 .all-cards-row {
@@ -270,8 +273,12 @@ padding-top: 10px;
 .all-cards-row .event-card img {
   position:absolute;
   /* max-width:100%; */
-  height:100%;
+  height: 78%;
 }
+
+  .change-view-container {
+    max-width: 50%;
+  }
 
 .change-view {
   width: 100%;
@@ -285,18 +292,19 @@ padding-top: 10px;
   border: none;
   backface-visibility: hidden;
   background: rgba(0,0,0,0);
+  padding-top: 10px;
 }
 
-/* .change-view img {
-  width: 30px;
-} */
+.change-view img {
+  width: 50px;
+}
 
 .cards-container {
   padding-top: 20px;
 }
 
 .checkbox img {
-  width: 30px;
+  width: 50px;
 }
 
 
