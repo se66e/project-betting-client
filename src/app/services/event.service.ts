@@ -84,6 +84,18 @@ export class EventService {
     return this.httpClient.post(`${this.baseUrl}/:id`, data, options)
       .toPromise();
   }
+  apply(rejected: boolean, accepted: boolean, pending: boolean) {
+    const options = {
+      withCredentials: true
+    };
+    const data = {
+      rejected: rejected,
+      accepted: accepted,
+      pending: pending
+    };
+    return this.httpClient.post(`${this.baseUrl}/:id/applications`, data, options)
+      .toPromise();
+  }
 }
 
 

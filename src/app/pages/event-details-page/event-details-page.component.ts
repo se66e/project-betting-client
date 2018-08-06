@@ -11,6 +11,10 @@ import { EventService } from '../../services/event.service';
 export class EventDetailsPageComponent implements OnInit {
   eventId: string;
   event: any;
+  application = {
+    'no-applications': true,
+    'show-applications': false
+  };
 
   constructor(private activatedRoute: ActivatedRoute, private eventService: EventService, private router: Router) {
     this.activatedRoute.params
@@ -28,6 +32,13 @@ export class EventDetailsPageComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  handleApplyClick() {
+    this.application = {
+      'no-applications': false,
+      'show-applications': true
+    };
   }
 
 }

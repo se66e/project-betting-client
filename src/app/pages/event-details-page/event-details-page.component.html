@@ -1,3 +1,20 @@
 <h1>
   {{event.name}}
 </h1>
+<div>
+  <img src="../../../assets/images/{{event.category}}.jpg" alt="">
+</div>
+<ul>
+  <li>{{event.details}}</li>
+  <li>{{event.location}}</li>
+  <li>{{event.date}}</li>
+</ul>
+
+<button (click)="handleApplyClick()">Apply to Event</button>
+
+<div [ngClass]="application">
+  <h3>Applications</h3>
+  <p>{{user}}</p>
+  <button>Accept</button>
+  <button>Reject</button>
+</div>
