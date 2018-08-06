@@ -34,7 +34,8 @@ const routes: Routes = [
   { path: 'profile', component: ProfilePageComponent, canActivate: [RequireUserGuard] },
   { path: 'events', component: ListEventsPageComponent, canActivate: [AuthInitGuard] },
   { path: 'events', component: CreateEventPageComponent, canActivate: [RequireUserGuard] },
-  { path: 'events/:id', component: EventDetailsPageComponent, canActivate: [RequireUserGuard] },
+  { path: 'events/:id', component: EventDetailsPageComponent, canActivate: [AuthInitGuard] },
+  { path: 'profile/:id', component: EventDetailsPageComponent, canActivate: [RequireUserGuard] },
   { path: '**', component: NotFoundPageComponent, canActivate: [AuthInitGuard] }
 ];
 

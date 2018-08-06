@@ -67,7 +67,7 @@ export class EventService {
       .toPromise();
   }
 
-  edit(id, name: any) {
+  edit(id: any, name: string) {
     const options = {
       withCredentials: true
     };

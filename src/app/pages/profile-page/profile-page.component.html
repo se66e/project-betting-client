@@ -1,7 +1,61 @@
-<div *ngIf="myEvents">
-  <div *ngFor="let item of myEvents" class="my-events">
-    {{item.name}}
-    <img src="../../../assets/images/{{item.category}}.jpg" alt="">
+<h1>
+  {{user}}</h1>
+
+
+<h2>Attending</h2>
+
+
+<h2>Events by me</h2>
+<ul>
+  <div class="all-cards-row">
+    <li *ngFor="let item of myEvents" class="event-card">
+      <a [routerLink]="item._id">
+        <p>{{item.name | titlecase}}</p>
+        <img src="../../../assets/images/{{item.category}}.jpg" alt="">
+      </a>
+    </li>
+  </div>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div *ngIf="myEvents">
+  <div class="all-cards-row">
+    <div *ngFor="let item of myEvents" class="event-card">
+      {{item.name}}
+      <img src="../../../assets/images/{{item.category}}.jpg" alt="">
+    </div>
   </div>
 
   <div class="checkbox">
@@ -13,6 +67,7 @@
     </button>
   </div>
 
+
   <form [hidden]="!showForm" #createEvent="ngForm">
     <div class="field flex-column">
       <label for="name">Name your event</label>
@@ -21,4 +76,4 @@
     </div>
     <button (click)="hanldeEditClick()">Edit</button>
   </form>
-</div>
+</div> -->

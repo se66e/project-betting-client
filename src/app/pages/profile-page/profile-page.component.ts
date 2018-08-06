@@ -19,6 +19,7 @@ export class ProfilePageComponent implements OnInit {
   applications: any;
   date: Date;
   showForm = false;
+  user: any;
 
   constructor(
     private authService: AuthService,
@@ -36,13 +37,14 @@ export class ProfilePageComponent implements OnInit {
   ngOnInit() {
   }
 
+
   hanldeEditClick() {
     this.activatedRoute.params
       .subscribe((params) => {
         this.eventId = params.id;
         this.eventService.edit(this.eventId, this.name)
           .then((result) => {
-            this.myEvents = result;
+            this.myEvents.update(result);
             this.showForm = false;
           })
           .catch((err) => {
