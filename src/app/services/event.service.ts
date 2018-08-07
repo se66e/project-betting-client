@@ -15,7 +15,7 @@ export class EventService {
   private user: any;
   private userChange: Subject<any> = new Subject();
 
-  private baseUrl = environment.apiUrl + 'events';
+  private baseUrl = environment.apiUrl + '/events';
 
   userChange$: Observable<any> = this.userChange.asObservable();
 
