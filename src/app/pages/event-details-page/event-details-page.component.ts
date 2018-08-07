@@ -9,7 +9,6 @@ import { EventService } from '../../services/event.service';
   styleUrls: ['./event-details-page.component.css']
 })
 export class EventDetailsPageComponent implements OnInit {
-  eventId: string;
   event: any;
   application = {
     'no-applications': true,
@@ -19,15 +18,14 @@ export class EventDetailsPageComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute, private eventService: EventService, private router: Router) {
     this.activatedRoute.params
       .subscribe((params) => {
-        this.eventId = params.id;
-        this.eventService.getOne(this.eventId)
-          .then((event) => {
-            this.event = event;
+        this.eventService.getOne(params.id)
+          .then((result) => {
+            this.event = result;
+            console.log(result);
           })
           .catch((err) => {
             console.log(err);
           });
-
       });
   }
 
@@ -42,6 +40,3 @@ export class EventDetailsPageComponent implements OnInit {
   }
 
 }
-
-
-

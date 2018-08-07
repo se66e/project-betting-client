@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Subject, Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environment';
+
 
 
 @Injectable({
@@ -13,7 +15,7 @@ export class EventService {
   private user: any;
   private userChange: Subject<any> = new Subject();
 
-  private baseUrl = 'http://localhost:3000/events';
+  private baseUrl = environment.apiUrl + 'events';
 
   userChange$: Observable<any> = this.userChange.asObservable();
 
