@@ -10,7 +10,8 @@ import { EventService } from '../../services/event.service';
 })
 export class EventDetailsPageComponent implements OnInit {
   event: any;
-  application = {
+  application: any;
+  showApplications = {
     'no-applications': true,
     'show-applications': false
   };
@@ -33,7 +34,14 @@ export class EventDetailsPageComponent implements OnInit {
   }
 
   handleApplyClick() {
-    this.application = {
+    this.activatedRoute.params
+      .subscribe((params) => {
+        this.eventService.apply(params.id)
+          .then((result) => {
+            console.log(result);
+          });
+      });
+    this.showApplications = {
       'no-applications': false,
       'show-applications': true
     };

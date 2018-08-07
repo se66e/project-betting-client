@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://betevents-server.herokuapp.com'
+  apiUrl: 'https://betevents-server.herokuapp.com'
 };

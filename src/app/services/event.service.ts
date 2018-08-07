@@ -83,23 +83,34 @@ export class EventService {
       // applications: applications
     };
 
-    return this.httpClient.post(`${this.baseUrl}/:id`, data, options)
+    return this.httpClient.post(`${this.baseUrl}/${id}`, data, options)
       .toPromise();
   }
-  apply(rejected: boolean, accepted: boolean, pending: boolean) {
+
+  apply(id) {
+    console.log(id);
     const options = {
       withCredentials: true
     };
-    const data = {
-      rejected: rejected,
-      accepted: accepted,
-      pending: pending
-    };
-    return this.httpClient.post(`${this.baseUrl}/:id/applications`, data, options)
+    return this.httpClient.post(`${this.baseUrl}/${id}/apply`, null, options)
       .toPromise();
   }
 }
 
+// apply(rejected: boolean, accepted: boolean, pending: boolean) {
+//   const options = {
+//     withCredentials: true
+//   };
+//   const data = {
+//     rejected: rejected,
+//     accepted: accepted,
+//     pending: pending
+//   };
+//   return this.httpClient.post(`${this.baseUrl}/:id/apply`, data, options)
+//     .toPromise();
+// }
+
 
 
 // , category: any, details: string, location: string, date: Date, applications: any
+
