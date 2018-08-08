@@ -45,10 +45,10 @@ export class EventDetailsPageComponent implements OnInit {
   ngOnInit() {
   }
 
-  handleApplyClick() {
+  handleApplyClick(appId) {
     this.activatedRoute.params
       .subscribe((params) => {
-        this.eventService.apply(params.id)
+        this.eventService.apply(params.id, this.activatedRoute.params)
           .then((result) => {
             this.applications = result;
           })

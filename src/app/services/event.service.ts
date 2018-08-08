@@ -99,12 +99,16 @@ export class EventService {
       .toPromise();
   }
 
-  accept(eventId) {
+  accept(eventId, applicationId) {
     const options = {
       withCredentials: true
     };
+    const data = {
+      eventId,
+      applicationId
+    };
 
-    return this.httpClient.put(`${this.baseUrl}/${eventId}/accept`, null, options)
+    return this.httpClient.put(`${this.baseUrl}/${eventId}/accept`, data, options)
       .toPromise();
   }
 
