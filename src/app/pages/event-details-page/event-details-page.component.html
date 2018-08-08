@@ -1,30 +1,58 @@
 <div *ngIf="event">
-  <h1>
-    {{event.name}}
-  </h1>
-
-  <img src="../../../assets/images/{{event.category}}.jpg" alt="">
-  <ul>
-    <li>{{event.details}}</li>
-    <li>{{event.location}}</li>
-    <li>{{event.date}}</li>
-  </ul>
-
-  <!-- <div *ngFor="let application of applications.applications">{{application.status}}</div> -->
-
-
-  <button (click)="handleApplyClick()">Apply to Event</button>
-
-  <!-- CONDITIONAL (to check if owner) -->
-
-  <div *ngFor="let application of event.applications">
-    {{application.user.username}}
-    <button (click)="handleAcceptClick(application.user._id)">Accept</button>
-    <button (click)="handleRejectClick(application.user._id)">Reject</button>
+  <div class="container">
+    <h1>
+      {{event.name}}
+    </h1>
+    <h2>{{event.owner.username}}</h2>
+    <div *ngIf="event.date">
+      <h3>Date: </h3>{{event.date | date: 'short'}}</div>
   </div>
-  <div [ngClass]="Showstatus">
-    <div *ngFor="let item of statuses">
-      Request {{item.applications | json}}
+  <div class="all-cards-column">
+    <img src="../../../assets/images/{{event.category}}.jpg" alt="" class="event-card">
+  </div>
+  <div class="container">
+    <ul>
+      <li *ngIf="event.details">
+        <h3> Details: </h3> {{event.details}}</li>
+      <li>
+        <h3 *ngIf="event.location">Location: </h3>{{event.location}}</li>
+    </ul>
+
+    <div *ngIf="currentUser._id != event.owner._id">
+      <button class="apply-btn" (click)="handleApplyClick()">Apply to Event</button>
+    </div>
+
+    <!-- CONDITIONAL (to check if owner) -->
+    <div *ngIf="event.owner._id == currentUser._id">
+      <div *ngFor="let application of event.applications">
+        <p>{{application.user.username}}</p>
+        <button (click)="handleAcceptClick(application.user._id)" class="accept-btn">Accept</button>
+        <button (click)="handleRejectClick(application.user._id)" class="reject-btn">Reject</button>
+      </div>
     </div>
   </div>
 </div>
+
+
+<!-- <div *ngFor="let application of event.applications">
+    <div *ngIf="application.user._id !== event.owner">
+      <div *ngFor="let application of event.applications">
+        <p [ngClass]="handleApplicants">{{application.user.username}}</p>
+        <button (click)="handleAcceptClick(application.user._id)" [ngClass]="handleApplicants">Accept</button>
+        <button (click)="handleRejectClick(application.user._id)" [ngClass]="handleApplicants">Reject</button>
+      </div>
+    </div>
+  </div> -->
+
+
+
+<!-- {{event.owner}} -->
+
+
+<!-- <div [ngClass]="Showstatus">
+  <div *ngFor="let item of statuses">
+    Request {{item.applications | json}}
+  </div>
+</div> -->
+
+<!-- .user.username -->

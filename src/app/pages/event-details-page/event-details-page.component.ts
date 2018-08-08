@@ -11,15 +11,12 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./event-details-page.component.css']
 })
 export class EventDetailsPageComponent implements OnInit {
+  currentUser: any;
   reject: any;
   accept: any;
   error: any;
   event: any;
   applications: any;
-  showApplications = {
-    'no-applications': true,
-    'show-applications': false
-  };
 
   constructor(private activatedRoute: ActivatedRoute,
     private eventService: EventService,
@@ -37,6 +34,11 @@ export class EventDetailsPageComponent implements OnInit {
           .catch((err) => {
             console.log(err);
           });
+      });
+
+    this.authService.me()
+      .then((result) => {
+        this.currentUser = result;
       });
   }
 
@@ -57,7 +59,6 @@ export class EventDetailsPageComponent implements OnInit {
 
   }
   handleAcceptClick(appId) {
-
     this.activatedRoute.params
       .subscribe((params) => {
         this.eventService.accept(params.id, appId);
@@ -65,7 +66,6 @@ export class EventDetailsPageComponent implements OnInit {
   }
 
   handleRejectClick(appId) {
-
     this.activatedRoute.params
       .subscribe((params) => {
         this.eventService.reject(params.id, appId);

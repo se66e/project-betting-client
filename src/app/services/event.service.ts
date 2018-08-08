@@ -87,24 +87,24 @@ export class EventService {
       .toPromise();
   }
 
-  apply(id) {
+  apply(id, applicationId) {
     console.log(id);
     const options = {
       withCredentials: true
     };
-    return this.httpClient.post(`${this.baseUrl}/${id}/apply`, null, options)
+    const data = {
+      applicationId
+    };
+    return this.httpClient.post(`${this.baseUrl}/${id}/apply`, applicationId, options)
       .toPromise();
   }
 
-  accept(eventId, applicationId) {
+  accept(eventId) {
     const options = {
       withCredentials: true
     };
-    const data = {
-      eventId,
-      applicationId
-    };
-    return this.httpClient.put(`${this.baseUrl}/${eventId}/accept`, data, options)
+
+    return this.httpClient.put(`${this.baseUrl}/${eventId}/accept`, null, options)
       .toPromise();
   }
 
