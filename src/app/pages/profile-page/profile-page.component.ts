@@ -32,11 +32,15 @@ export class ProfilePageComponent implements OnInit {
         console.log(result);
         this.myEvents = result;
       });
+
+    this.authService.me()
+      .then((result) => {
+        this.user = result;
+      });
   }
 
   ngOnInit() {
   }
-
 
   hanldeEditClick() {
     this.activatedRoute.params

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EventService } from '../../services/event.service';
+import { currentId } from 'async_hooks';
+import { AuthService } from '../../services/auth.service';
 
 
 @Component({
@@ -10,13 +12,17 @@ import { EventService } from '../../services/event.service';
 })
 export class EventDetailsPageComponent implements OnInit {
   event: any;
-  application: any;
+  applications: any;
   showApplications = {
     'no-applications': true,
     'show-applications': false
   };
 
-  constructor(private activatedRoute: ActivatedRoute, private eventService: EventService, private router: Router) {
+  constructor(private activatedRoute: ActivatedRoute,
+    private eventService: EventService,
+    private router: Router,
+    private authService: AuthService) {
+
     this.activatedRoute.params
       .subscribe((params) => {
         this.eventService.getOne(params.id)
@@ -38,13 +44,16 @@ export class EventDetailsPageComponent implements OnInit {
       .subscribe((params) => {
         this.eventService.apply(params.id)
           .then((result) => {
-            console.log(result);
+            this.applications = result;
           });
       });
-    this.showApplications = {
-      'no-applications': false,
-      'show-applications': true
-    };
-  }
 
+  }
+  //   objectValue(object) {
+  //     Object.values(object);
+  //     console.log(object);
+  //   }
 }
+
+
+

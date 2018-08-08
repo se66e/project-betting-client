@@ -12,12 +12,13 @@
     <li>{{event.date}}</li>
   </ul>
 
+  <div *ngFor="let application of applications.applications">{{application | json}}</div>
+
   <button (click)="handleApplyClick()">Apply to Event</button>
 
-  <div [ngClass]="showApplications">
-    <h3>Applications</h3>
-    <p>{{user}}</p>
-    <button>Accept</button>
-    <button>Reject</button>
+  <div [ngClass]="Showstatus">
+    <div *ngFor="let item of statuses">
+      Request {{item.status | json}}
+    </div>
   </div>
 </div>
