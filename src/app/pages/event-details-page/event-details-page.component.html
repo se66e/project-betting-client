@@ -3,22 +3,28 @@
     {{event.name}}
   </h1>
 
-  <div>
-    <img src="../../../assets/images/{{event.category}}.jpg" alt="">
-  </div>
+  <img src="../../../assets/images/{{event.category}}.jpg" alt="">
   <ul>
     <li>{{event.details}}</li>
     <li>{{event.location}}</li>
     <li>{{event.date}}</li>
   </ul>
 
-  <div *ngFor="let application of applications.applications">{{application | json}}</div>
+  <!-- <div *ngFor="let application of applications.applications">{{application.status}}</div> -->
+
 
   <button (click)="handleApplyClick()">Apply to Event</button>
 
+  <!-- CONDITIONAL (to check if owner) -->
+
+  <div *ngFor="let application of event.applications">
+    {{application.user.username}}
+    <button (click)="handleAcceptClick(application.user._id)">Accept</button>
+    <button (click)="handleRejectClick(application.user._id)">Reject</button>
+  </div>
   <div [ngClass]="Showstatus">
     <div *ngFor="let item of statuses">
-      Request {{item.status | json}}
+      Request {{item.applications | json}}
     </div>
   </div>
 </div>

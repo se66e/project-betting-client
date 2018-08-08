@@ -11,6 +11,9 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./event-details-page.component.css']
 })
 export class EventDetailsPageComponent implements OnInit {
+  reject: any;
+  accept: any;
+  error: any;
   event: any;
   applications: any;
   showApplications = {
@@ -21,7 +24,8 @@ export class EventDetailsPageComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute,
     private eventService: EventService,
     private router: Router,
-    private authService: AuthService) {
+    private authService: AuthService,
+  ) {
 
     this.activatedRoute.params
       .subscribe((params) => {
@@ -45,14 +49,28 @@ export class EventDetailsPageComponent implements OnInit {
         this.eventService.apply(params.id)
           .then((result) => {
             this.applications = result;
+          })
+          .catch((err) => {
+            this.error = err;
           });
       });
 
   }
-  //   objectValue(object) {
-  //     Object.values(object);
-  //     console.log(object);
-  //   }
+  handleAcceptClick(appId) {
+
+    this.activatedRoute.params
+      .subscribe((params) => {
+        this.eventService.accept(params.id, appId);
+      });
+  }
+
+  handleRejectClick(appId) {
+
+    this.activatedRoute.params
+      .subscribe((params) => {
+        this.eventService.reject(params.id, appId);
+      });
+  }
 }
 
 

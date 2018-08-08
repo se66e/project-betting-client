@@ -66,7 +66,7 @@
   - getAll()
   - getOne(id)   
   - createOne(data)
-  - applyOne(id) --- make sure to only allow one application/person/event
+  - applyOne(id) --- make sure to only allow one application/person/event and not the user
   - confirm(eventId, applicationId, status)
 
 ## Pages

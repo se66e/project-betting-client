@@ -95,7 +95,33 @@ export class EventService {
     return this.httpClient.post(`${this.baseUrl}/${id}/apply`, null, options)
       .toPromise();
   }
+
+  accept(eventId, applicationId) {
+    const options = {
+      withCredentials: true
+    };
+    const data = {
+      eventId,
+      applicationId
+    };
+    return this.httpClient.put(`${this.baseUrl}/${eventId}/accept`, data, options)
+      .toPromise();
+  }
+
+  reject(eventId, applicationId) {
+    const options = {
+      withCredentials: true
+    };
+    const data = {
+      eventId,
+      applicationId
+    };
+    return this.httpClient.put(`${this.baseUrl}/${eventId}/reject`, data, options)
+      .toPromise();
+  }
+
 }
+
 
 // apply(rejected: boolean, accepted: boolean, pending: boolean) {
 //   const options = {
