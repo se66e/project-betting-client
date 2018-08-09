@@ -1,15 +1,16 @@
-<div *ngIf="!event">
+<div *ngIf="!event && !currentUser">
   ... loading ...
 </div>
 
-<div *ngIf="event">
+<div *ngIf="event && currentUser">
   <div class="container">
     <h1>
       {{event.name}}
     </h1>
     <h2>{{event.owner.username}}</h2>
     <div *ngIf="event.date">
-      <h3>Date: </h3>{{event.date | date: 'short'}}</div>
+      <h3>Date: {{event.date | date: 'short'}}</h3>
+    </div>
   </div>
   <div class="all-cards-column">
     <img src="../../../assets/images/{{event.category}}.jpg" alt="" class="event-card">

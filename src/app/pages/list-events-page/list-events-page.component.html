@@ -1,3 +1,7 @@
+<div *ngIf="!eventList">
+  ... loading ...
+</div>
+
 <app-create-event-page [eventList]="eventList"></app-create-event-page>
 <div class="cards-container">
   <div class="change-view-container">

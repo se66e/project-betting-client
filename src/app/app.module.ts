@@ -28,13 +28,13 @@ import { AuthInitGuard } from './guards/auth-init.guard';
 
 // ----- Routes ----- \\
 const routes: Routes = [
-  { path: '', component: HomePageComponent, canActivate: [AuthInitGuard] },
+  { path: '', component: HomePageComponent, canActivate: [RequireUserGuard] },
   { path: 'login', component: LoginPageComponent, canActivate: [RequireAnonGuard] },
   { path: 'signup', component: SignupPageComponent, canActivate: [RequireAnonGuard] },
   { path: 'profile', component: ProfilePageComponent, canActivate: [RequireUserGuard] },
   { path: 'events', component: ListEventsPageComponent, canActivate: [AuthInitGuard] },
   { path: 'events', component: CreateEventPageComponent, canActivate: [RequireUserGuard] },
-  { path: 'events/:id', component: EventDetailsPageComponent, canActivate: [AuthInitGuard] },
+  { path: 'events/:id', component: EventDetailsPageComponent, canActivate: [RequireUserGuard] },
   { path: 'profile/:id', component: EventDetailsPageComponent, canActivate: [RequireUserGuard] },
   { path: '**', component: NotFoundPageComponent, canActivate: [AuthInitGuard] }
 ];
