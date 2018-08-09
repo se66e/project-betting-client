@@ -24,10 +24,17 @@
 
     <!-- CONDITIONAL (to check if owner) -->
     <div *ngIf="event.owner._id == currentUser._id">
-      <div *ngFor="let application of event.applications">
-        <p>{{application.user.username}}</p>
-        <button (click)="handleAcceptClick(application.user._id)" class="accept-btn">Accept</button>
-        <button (click)="handleRejectClick(application.user._id)" class="reject-btn">Reject</button>
+      <div *ngFor="let application of event.applications" class="all-decisions-row">
+        <ng-container *ngIf="application.status == 'pending'">
+          <p>{{application.user.username}}</p>
+          <div class="decide-btn">
+            <button (click)="handleAcceptClick(application.user._id)" class="accept-btn">Accept</button>
+            <button (click)="handleRejectClick(application.user._id)" class="reject-btn">Reject</button>
+          </div>
+        </ng-container>
+        <div *ngIf="application.status == 'accepted' || 'rejected'">
+          <p>You have no more applications</p>
+        </div>
       </div>
     </div>
   </div>

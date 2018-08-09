@@ -48,7 +48,7 @@ export class EventDetailsPageComponent implements OnInit {
   handleApplyClick(appId) {
     this.activatedRoute.params
       .subscribe((params) => {
-        this.eventService.apply(params.id, this.activatedRoute.params)
+        this.eventService.apply(params.id)
           .then((result) => {
             this.applications = result;
           })

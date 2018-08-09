@@ -87,15 +87,13 @@ export class EventService {
       .toPromise();
   }
 
-  apply(id, applicationId) {
+  apply(id) {
     console.log(id);
     const options = {
       withCredentials: true
     };
-    const data = {
-      applicationId
-    };
-    return this.httpClient.post(`${this.baseUrl}/${id}/apply`, applicationId, options)
+    console.log(`${this.baseUrl}/${id}/apply`);
+    return this.httpClient.post(`${this.baseUrl}/${id}/apply`, null, options)
       .toPromise();
   }
 
@@ -121,6 +119,13 @@ export class EventService {
       applicationId
     };
     return this.httpClient.put(`${this.baseUrl}/${eventId}/reject`, data, options)
+      .toPromise();
+  }
+  applications(applications) {
+    const options = {
+      withCredentials: true
+    };
+    return this.httpClient.put(`${this.baseUrl}/my-applications`, options)
       .toPromise();
   }
 

@@ -132,7 +132,7 @@ form input {
 .auth-form {
   background: rgb(125, 235, 180);
   box-shadow: 0 4px 5px 0 rgba(0,0,0,0.2);
-  height: 42vh;
+  height: 50vh;
 }
 
 .auth-header .signup,
@@ -176,10 +176,16 @@ form input {
 
 .ng-valid[required], .ng-valid.required  {
   border-left: 5px solid #42A948; 
+  border-radius: 8px;
+  width: 250px;
+  height: 50px;
 }
 
 .ng-invalid:not(form)  {
-  border-left: 5px solid #a94442; 
+  border-left: 5px solid #a94442;
+  border-radius: 8px;
+  width: 250px;
+  height: 50px;
 }
 
 /* -- Forms create -- */
@@ -189,7 +195,7 @@ form input {
 }
 
 .create-form {
-  background: rgb(177, 41, 41);
+  background: rgba(5, 1, 27, 0.5);
   box-shadow: 20px black;
   border-radius: 8px;
 }
@@ -198,21 +204,28 @@ form input {
   margin: 0;
   text-align: center;
   padding: 20px 0;
-  background: rgb(5, 1, 27);
-  color: white;
+  background: white;
+  color: black;
 }
 
 .create-form button {
   padding: 15px 20px;
-  background: white;
+  background: green;
   border-radius: 8px;
   margin: 20px 0;
-  font-size: 16px
+  font-size: 16px;
+  border: none;
+  color: white;
+  font-size: 20px;
+  margin-top: 45px;
 }
 
 .create-form input {
   border: none;
-  
+  border-radius: 8px;
+  height: 40px;
+  width: 250px;
+  color: rgba(0,0,0,0.7);
 }
 
 .flex-column {
@@ -276,9 +289,13 @@ form input {
   height: 78%;
 }
 
-  .change-view-container {
-    max-width: 50%;
+.change-view-container {
   }
+
+.create-btn {
+  float: right;
+
+}
 
 .change-view {
   width: 100%;
@@ -304,7 +321,7 @@ form input {
 }
 
 .checkbox img {
-  width: 50px;
+  width: 45px;
 }
 
 /* Applications */
@@ -317,6 +334,39 @@ form input {
   color: green;
 }
 
+.apply-btn {
+  background: blue;
+  border-radius: 8px;
+  padding: 15px 20px;
+  color: white;
+  font-size: 15px;
+}
 
+.reject-btn {
+background: red;
+border-radius: 8px;
+padding: 15px 20px;
+color: white;
+font-size: 15px;
+}
 
+.accept-btn {
+  background: green;
+  border-radius: 8px;
+  padding: 15px 20px;
+  color: white;
+  font-size: 15px;
+}
+
+.all-decisions-row {
+  display: flex;
+  flex-flow: row wrap-reverse;
+  justify-content: space-evenly;
+  margin: 15px 0;
+  align-items: center;
+}
+
+.all-decisions-row p {
+  font-size: 27px;
+}
 

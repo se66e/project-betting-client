@@ -10,16 +10,16 @@ import { EventService } from '../../services/event.service';
   styleUrls: ['./profile-page.component.css']
 })
 export class ProfilePageComponent implements OnInit {
+  allEvents: any;
   myEvents: any;
   eventId: any;
-  category: any;
   name: string;
   location: string;
   details: string;
-  applications: any;
   date: Date;
   showForm = false;
   user: any;
+  applications: any;
 
   constructor(
     private authService: AuthService,
@@ -29,7 +29,6 @@ export class ProfilePageComponent implements OnInit {
 
     this.eventService.getMyEvents()
       .then((result) => {
-        console.log(result);
         this.myEvents = result;
       });
 

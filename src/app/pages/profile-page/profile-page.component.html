@@ -1,21 +1,26 @@
-<div *ngIf="user">
-  <h1>{{user.username}}</h1>
-</div>
+<div *ngIf="user || event">
+  <div class="container">
 
-<h2>Attending</h2>
+    <div *ngIf="user">
+      <h1>{{user.username}}</h1>
+    </div>
 
+    <h2>Attending</h2>
 
-<h2>Events by me</h2>
-<ul>
-  <div class="all-cards-row">
-    <li *ngFor="let item of myEvents" class="event-card">
-      <a [routerLink]="item._id">
-        <p>{{item.name | titlecase}}</p>
-        <img src="../../../assets/images/{{item.category}}.jpg" alt="">
-      </a>
-    </li>
+    {{applications}}
+    <h2>Events by me</h2>
+    <ul>
+      <div class="all-cards-row">
+        <li *ngFor="let item of myEvents" class="event-card">
+          <a [routerLink]="item._id">
+            <p>{{item.name | titlecase}}</p>
+            <img src="../../../assets/images/{{item.category}}.jpg" alt="">
+          </a>
+        </li>
+      </div>
+    </ul>
   </div>
-</ul>
+</div>
 
 
 
