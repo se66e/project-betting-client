@@ -1,3 +1,7 @@
+<div *ngIf="!event">
+  ... loading ...
+</div>
+
 <div *ngIf="event">
   <div class="container">
     <h1>
@@ -17,9 +21,10 @@
       <li>
         <h3 *ngIf="event.location">Location: </h3>{{event.location}}</li>
     </ul>
-
-    <div *ngIf="currentUser._id != event.owner._id">
-      <button class="apply-btn" (click)="handleApplyClick()">Apply to Event</button>
+    <div *ngIf="currentUser">
+      <div *ngIf="currentUser._id != event.owner._id">
+        <button class="apply-btn" (click)="handleApplyClick()">Apply to Event</button>
+      </div>
     </div>
 
     <!-- CONDITIONAL (to check if owner) -->
@@ -32,9 +37,9 @@
             <button (click)="handleRejectClick(application.user._id)" class="reject-btn">Reject</button>
           </div>
         </ng-container>
-        <div *ngIf="application.status == 'accepted' || 'rejected'">
-          <p>You have no more applications</p>
-        </div>
+        <ng-container *ngIf="application.status != 'pending'">
+          <p>No pending Applications</p>
+        </ng-container>
       </div>
     </div>
   </div>
