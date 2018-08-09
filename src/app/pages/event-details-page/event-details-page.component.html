@@ -22,9 +22,23 @@
       <li>
         <h3 *ngIf="event.location">Location: </h3>{{event.location}}</li>
     </ul>
+    <!-- <div *ngIf="currentUser">
+      <div *ngIf="currentUser._id != event.owner._id">
+        <ng-container *ngIf="currentUser.username != event.applications">
+          <button class="apply-btn" (click)="handleApplyClick()" [ngClass]="apply">Apply to Event</button>
+        </ng-container>
+      </div>
+    </div> -->
+
     <div *ngIf="currentUser">
       <div *ngIf="currentUser._id != event.owner._id">
-        <button class="apply-btn" (click)="handleApplyClick()" [ngClass]="apply">Apply to Event</button>
+        <div *ngFor="let application of event.applications; let i = index">
+          <div *ngIf="currentUser._id != application.user._id">
+            <ng-container>
+              <button class="apply-btn" (click)="handleApplyClick()" [ngClass]="apply" *ngIf="i < 1">Apply to Event</button>
+            </ng-container>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -37,9 +51,6 @@
             <button (click)="handleAcceptClick(application.user._id)" class="accept-btn">Accept</button>
             <button (click)="handleRejectClick(application.user._id)" class="reject-btn">Reject</button>
           </div>
-        </ng-container>
-        <ng-container *ngIf="application.status != 'pending'">
-          <p>No pending Applications</p>
         </ng-container>
       </div>
     </div>

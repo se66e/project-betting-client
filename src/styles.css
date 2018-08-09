@@ -79,6 +79,7 @@ header a {
   position: absolute;
   background: rgb(255, 255, 255);
   margin: 0 20px;
+  z-index: 1;
 }
 
 #show-menu {
@@ -371,3 +372,12 @@ font-size: 15px;
   font-size: 27px;
 }
 
+.auth-btn {
+  width: 150px;
+  height: 40px;
+  border: 1px solid black;
+  border-radius: 8px;
+  margin-top: 40px;
+  font-size: 20px;
+  background-color: rgb(0,0,0,0);
+}
