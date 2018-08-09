@@ -16,6 +16,10 @@ export class EventDetailsPageComponent implements OnInit {
   error: any;
   event: any;
   applications: any;
+  apply = {
+    'no-applications': false,
+    'show-applications': true
+  };
 
   constructor(private activatedRoute: ActivatedRoute,
     private eventService: EventService,
@@ -50,6 +54,10 @@ export class EventDetailsPageComponent implements OnInit {
         this.eventService.apply(params.id)
           .then((result) => {
             this.applications = result;
+            this.apply = {
+              'no-applications': true,
+              'show-applications': false
+            };
           })
           .catch((err) => {
             this.error = err;

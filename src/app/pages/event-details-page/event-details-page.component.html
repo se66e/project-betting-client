@@ -23,7 +23,7 @@
     </ul>
     <div *ngIf="currentUser">
       <div *ngIf="currentUser._id != event.owner._id">
-        <button class="apply-btn" (click)="handleApplyClick()">Apply to Event</button>
+        <button class="apply-btn" (click)="handleApplyClick()" [ngClass]="apply">Apply to Event</button>
       </div>
     </div>
 
