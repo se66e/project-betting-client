@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EventService } from '../../services/event.service';
-import { currentId } from 'async_hooks';
 import { AuthService } from '../../services/auth.service';
 
 
